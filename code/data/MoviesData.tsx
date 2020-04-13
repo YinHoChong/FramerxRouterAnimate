@@ -5,6 +5,19 @@ let thewitcher = "./code/images/02_NF_TheWitcher_SocialSkin_facebook.jpg";
 let thewitcherPath = url(thewitcher).replace("/preview", "");
 let thewitcherWallpaper = "./code/images/wallpaper/netflix-the-witcher-cm.jpg";
 let thewitcherWallpaperPath = url(thewitcherWallpaper).replace("/preview", "");
+let avatarWitcherCiri = "./code/images/avatar/witcherCiri.jpg";
+let avatarWitcherCiriPath = url(avatarWitcherCiri).replace("/preview", "");
+let avatarWitcherYennefer = "./code/images/avatar/witcherYennefer.jpg";
+let avatarWitcherYenneferPath = url(avatarWitcherYennefer).replace(
+  "/preview",
+  ""
+);
+let avatarWitcherGeraltofRivia =
+  "./code/images/avatar/witcherGeraltofRivia.jpg";
+let avatarWitcherGeraltofRiviaPath = url(avatarWitcherGeraltofRivia).replace(
+  "/preview",
+  ""
+);
 
 let django = "./code/images/34838-269882.jpg";
 let djangoPath = url(django).replace("/preview", "");
@@ -37,6 +50,26 @@ export const movies = [
     type: "1 Season",
     genre: "TV Action & Adventure",
     color: "#ff0055",
+    avatars: [
+      {
+        summonerName: "Geralt of Rivia",
+        realName: "Henry Cavill",
+        image: avatarWitcherGeraltofRiviaPath,
+      },
+      {
+        summonerName: "Ciri",
+        realName: "Freya Allan",
+        image: avatarWitcherCiriPath,
+      },
+      {
+        summonerName: "Yennefer",
+        realName: "Anya Chalotra",
+        image: avatarWitcherYenneferPath,
+      },
+      // avatarWitcherGeraltofRiviaPath,
+      // avatarWitcherCiriPath,
+      // avatarWitcherYenneferPath,
+    ],
   },
   {
     key: 2,
