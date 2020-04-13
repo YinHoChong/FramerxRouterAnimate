@@ -1,0 +1,20 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^16.8"
+	},
+	"peerDependencies": {
+		"framer": "^1.0",
+		"react": "^16.8"
+	},
+	"framer": {
+		"id": "ea1b1516-5745-4a41-aeec-2bf492a22731"
+	},
+	"author": "Yin-Ho Chong",
+	"dependencies": {
+		"framer-motion": "^2.0.0-beta.42",
+		"react-router-dom": "^5.1.2",
+		"styled-components": "^5.0.1"
+	}
+}
