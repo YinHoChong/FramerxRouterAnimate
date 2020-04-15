@@ -1,4 +1,3 @@
-import * as React from "react";
 import { url } from "framer/resource";
 
 // WITCHER COVER
@@ -203,3 +202,123 @@ export const movies = [
     ],
   },
 ];
+
+export const moviesData = {
+  1: {
+    key: 1,
+    image: thewitcherPath,
+    wallpaper: thewitcherWallpaperPath,
+    title: "The Witcher",
+    year: 2019,
+    maturityNumber: "16+",
+    type: "1 Season",
+    genre: "TV Action & Adventure",
+    color: "#ff0055",
+    avatars: [
+      {
+        summonerName: "Geralt of Rivia",
+        realName: "Henry Cavill",
+        image: avatarWitcherGeraltofRiviaPath,
+      },
+      {
+        summonerName: "Ciri",
+        realName: "Freya Allan",
+        image: avatarWitcherCiriPath,
+      },
+      {
+        summonerName: "Yennefer",
+        realName: "Anya Chalotra",
+        image: avatarWitcherYenneferPath,
+      },
+    ],
+  },
+  2: {
+    key: 2,
+    image: djangoPath,
+    wallpaper: djangoWallpaperPath,
+    title: "Django Unchained",
+    year: 2012,
+    maturityNumber: "18+",
+    type: "Movie",
+    genre: "Drama, Western",
+    color: "#0099ff",
+    avatars: [
+      {
+        summonerName: "Django",
+        realName: "Jamie Foxx",
+        image: avatarDjangoDjangoPath,
+      },
+      {
+        summonerName: "Dr. King Schultz",
+        realName: "Christoph Waltz",
+        image: avatarDjangoDrKingSchultzPath,
+      },
+      {
+        summonerName: "Calvin Candie",
+        realName: "Leonardo DiCaprio",
+        image: avatarDjangoCalvinCandiePath,
+      },
+    ],
+  },
+  3: {
+    key: 3,
+    image: darkknightrisesPath,
+    wallpaper: darkknightrisesWallpaperPath,
+    title: "The Dark Knight Rises",
+    year: 2012,
+    maturityNumber: "15+",
+    type: "Movie",
+    genre: "Action, Adventure",
+    color: "#22cc88",
+    avatars: [
+      {
+        summonerName: "Bruce Wayne",
+        realName: "Christian Bale",
+        image: avatarBruceWaynePath,
+      },
+      {
+        summonerName: "Commissioner Gordon",
+        realName: "Gary Oldman",
+        image: avatarCommissionerGordonPath,
+      },
+      {
+        summonerName: "Bane",
+        realName: "Tom Hardy",
+        image: avatarBanePath,
+      },
+      {
+        summonerName: "Selina",
+        realName: "Anne Hathaway",
+        image: avatarSelinaPath,
+      },
+    ],
+  },
+  4: {
+    key: 4,
+    image: riseempirePath,
+    wallpaper: riseempireWallpaperPath,
+    title: "300: Rise of an Empire",
+    year: 2014,
+    maturityNumber: "17+",
+    type: "Movie",
+    genre: "Action, Drama",
+    color: "#ffaa00",
+    avatars: [
+      {
+        summonerName: "Themistokles",
+        realName: "Sullivan Stapleton",
+        image: avatarThemistoklesPath,
+      },
+      {
+        summonerName: "Artemisia",
+        realName: "Eva Green",
+        image: avatarArtemisiaPath,
+      },
+      {
+        summonerName: "Queen Gorgo",
+        realName: "Lena Headey",
+        image: avatarQueenGorgoPath,
+      },
+    ],
+  },
+};

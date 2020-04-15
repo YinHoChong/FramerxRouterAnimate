@@ -5,7 +5,7 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { useHoverIntent } from "./use-hover-intent";
 import styled from "styled-components";
 import { url } from "framer/resource";
-import { AnimateSharedLayoutGallery } from "../AnimateSharedLayoutGallery/AnimateSharedLayoutGallery";
+import { SingleImage } from "./SingleImage";
 
 // import { movies } from "../../../data/MoviesData";
 import useStore from "../../../utils/store";
@@ -63,7 +63,7 @@ const StyledCovers = styled.ul`
 // `}
 // `;
 
-const Cover = styled(motion.li)`
+const StyledCoverMotionLi = styled(motion.li)`
   // background-color: var(--highlight);
   // background-image: url(--image);
   border-radius: 10px;
@@ -108,7 +108,7 @@ const StyledBox = styled.div`
   height: 100%;
 `;
 
-const StyledImgMotion = styled(motion.img)`
+const StyledWallpaperImgMotion = styled(motion.img)`
   position: absolute;
   // max-width: 105%;
 
@@ -206,93 +206,6 @@ const StyledOverlay = styled(motion.div)`
   cursor: pointer;
 `;
 
-const StyledSingleImageContainer = styled(motion.div)`
-  position: absolute;
-  margin: 0;
-  top: 0;
-  // left: 0;
-  // bottom: 0;
-  // right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  // margin: auto;
-  // background: red;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  flex-direction: column;
-  cursor: pointer;
-`;
-
-const StyledBigAvatarImg = styled(StyledAvatarImg)`
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  border: none;
-  box-shadow: none;
-  // border: 2px solid;
-  // border-image: radial-gradient(rgb(0, 143, 104), rgb(250, 224, 66)) 1;
-`;
-
-const StyledAvatarWrapper = styled(motion.div)`
-  position: relative;
-  text-align: center;
-  color: white;
-  width: 900px;
-  height: 650px;
-  // &::before {
-  //   position: absolute;
-  //   content: " ";
-  //   bottom: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 33%;
-  //   background-image: linear-gradient(to top, #fff, rgba(0, 0, 0, 0));
-  // }
-`;
-
-const StyledBackgroundNames = styled(motion.div)`
-  position: absolute;
-  content: " ";
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 33%;
-  border-radius: 0 0 20px 20px;
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-`;
-
-const StyledAvatarNames = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  color: white;
-  font-size: 30px;
-`;
-
-const StyledSummonerName = styled(motion.div)`
-  color: white;
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
-`;
-
-const StyledRealName = styled(motion.div)`
-  color: rgb(187, 187, 187);
-  font-size: 30px;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
-`;
-
 //   li:last-child {
 //     margin-right: 0px;
 //   }
@@ -325,27 +238,7 @@ const StyledRealName = styled(motion.div)`
 //   );
 // }
 
-// let thewitcher = "./code/images/02_NF_TheWitcher_SocialSkin_facebook.jpg";
-// let thewitcherPath = url(thewitcher).replace("/preview", "");
-
-let thewitcherWallpaper = "./code/images/wallpaper/netflix-the-witcher-cm.jpg";
-let thewitcherWallpaperPath = url(thewitcherWallpaper).replace("/preview", "");
-
-let avatarWitcherCiri = "./code/images/avatar/witcherCiri.jpg";
-let avatarWitcherCiriPath = url(avatarWitcherCiri).replace("/preview", "");
-let avatarWitcherYennefer = "./code/images/avatar/witcherYennefer.jpg";
-let avatarWitcherYenneferPath = url(avatarWitcherYennefer).replace(
-  "/preview",
-  ""
-);
-let avatarWitcherGeraltofRivia =
-  "./code/images/avatar/witcherGeraltofRivia.jpg";
-let avatarWitcherGeraltofRiviaPath = url(avatarWitcherGeraltofRivia).replace(
-  "/preview",
-  ""
-);
-
-function MovieItem({ color, currentColor, setColor, image, ...props }) {
+function CoverItem({ color, currentColor, setColor, image, ...props }) {
   const isOpen = color === currentColor;
   const handlers = useHoverIntent(
     () => setColor(color),
@@ -354,7 +247,7 @@ function MovieItem({ color, currentColor, setColor, image, ...props }) {
   );
 
   return (
-    <Cover
+    <StyledCoverMotionLi
       animate
       transition={{ duration: 0.4, ease: [0.37, 0.04, 0.2, 1] }}
       //   className={isOpen ? "open" : undefined}
@@ -367,13 +260,13 @@ function MovieItem({ color, currentColor, setColor, image, ...props }) {
 }
 
 // GALLERY
-const variants = {
+const wallpaperVariants = {
   enter: (direction: number) => {
     return {
       // x: direction > 0 ? 1000 : -100,
       x: -100,
       opacity: 0.3,
-      duration: 1.5,
+      // duration: 1.5,
     };
   },
   center: {
@@ -385,21 +278,15 @@ const variants = {
     return {
       // zIndex: 0,
       // x: direction < 0 ? 1000 : -100,
-      x: 100,
-      opacity: 0.3,
-      duration: 1.5,
+      //
+      // x: 100,
+      // opacity: 0.3,
+      // duration: 1.5,
+      x: 0,
+      opacity: 1,
+      // duration: 1.5,
     };
   },
-};
-
-// TEXT
-const transition = {
-  duration: 0.5,
-  ease: [0.43, 0.13, 0.23, 0.96],
-};
-const avatarInfos = {
-  exit: { y: 10, opacity: 0, duration: 0, ease: [0.43, 0.13, 0.23, 0.96] },
-  enter: { y: 0, opacity: 1, transition: { delay: 0.5, ...transition } },
 };
 
 // const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
@@ -468,13 +355,13 @@ const avatarVariants = {
       x: { stiffness: 1000 },
     },
   },
-  // exit: {
-  //   x: -50,
-  //   opacity: 0,
-  //   transition: {
-  //     x: { stiffness: 1000 },
-  //   },
-  // },
+  exit: {
+    x: -50,
+    opacity: 0,
+    transition: {
+      x: { stiffness: 1000 },
+    },
+  },
 };
 
 const backgroundImageVariants = {
@@ -488,113 +375,47 @@ const backgroundImageVariants = {
   },
 };
 
-function SingleImage({
-  selection,
-  summonerNameSelected,
-  realNameSelected,
-  onClick,
-}) {
-  return (
-    <StyledSingleImageContainer
-      onClick={onClick}
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
-      animate
-      transition={{ duration: 0.2, delay: 0.1 }}
-    >
-      <StyledAvatarWrapper>
-        <StyledBigAvatarImg
-          layoutId={selection}
-          src={selection}
-          summonerNameSelected={summonerNameSelected}
-          realNameSelected={realNameSelected}
-          // style={{ backgroundColor: color }}
-        />
-        <StyledBackgroundNames
-          initial="exit"
-          animate="enter"
-          exit="exit"
-          variants={avatarInfos}
-        />
-        <StyledAvatarNames
-          initial="closed"
-          animate="open"
-          exit="exit"
-          variants={metaInfoVariantsUl}
-        >
-          <StyledSummonerName variants={metaInfoVariants}>
-            {summonerNameSelected}
-          </StyledSummonerName>
-          <StyledRealName variants={metaInfoVariants}>
-            {realNameSelected}
-          </StyledRealName>
-        </StyledAvatarNames>
-      </StyledAvatarWrapper>
-    </StyledSingleImageContainer>
-  );
-}
-
 export function NetflixMenu() {
   const [currentColor, setColor] = useState(false);
-
   /// STORE HOOKS
   const [store, setStore] = useStore();
+  const { selectedMovie, moviesData } = store;
   const {
-    currentMovies: {
-      key = 1,
-      wallpaper = thewitcherWallpaperPath,
-      title = "The Witcher",
-      year = 2019,
-      maturityNumber = "16+",
-      type = "1 Season",
-      genre = "TV Action & Adventure",
-      avatars = [
-        {
-          summonerName: "Geralt of Rivia",
-          realName: "Henry Cavill",
-          image: avatarWitcherGeraltofRiviaPath,
-        },
-        {
-          summonerName: "Ciri",
-          realName: "Freya Allan",
-          image: avatarWitcherCiriPath,
-        },
-        {
-          summonerName: "Yennefer",
-          realName: "Anya Chalotra",
-          image: avatarWitcherYenneferPath,
-        },
-      ],
-    },
-  } = store;
+    key,
+    wallpaper,
+    title,
+    year,
+    maturityNumber,
+    type,
+    genre,
+    avatars,
+  } = moviesData[selectedMovie];
 
   const avatarsImage = avatars.map((item) => item.image);
   const avatarsSummonerName = avatars.map((item) => item.summonerName);
   const avatarsRealName = avatars.map((item) => item.realName);
 
   //// GALLERY
-  const [[page, direction], setPage] = useState([0, 0]);
+  // const [[page, direction], setPage] = useState([0, 0]);
 
   ///// HOOKS Overlay
   const [index, setIndex] = useState(false);
 
   return (
     <>
-      {" "}
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence
           initial={false}
           // custom={direction}
         >
-          <StyledBox>
-            <StyledImgMotion
+          <StyledBox key={`box${key}`}>
+            <StyledWallpaperImgMotion
               key={key}
               // src={movies[imageIndex].image}
               // src={image}
               src={wallpaper}
               // custom={direction}
-              variants={variants}
+              variants={wallpaperVariants}
               initial="enter"
               animate="center"
               exit="exit"
@@ -616,8 +437,8 @@ export function NetflixMenu() {
             key={`listText${key}`}
             initial="closed"
             animate="open"
-            // exit="closed"
             exit="exit"
+            // exit="closed"
             // variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
             variants={metaInfoVariantsUl}
           >
@@ -637,59 +458,54 @@ export function NetflixMenu() {
               key={`avatarsList${key}`}
               initial="closed"
               animate="open"
-              exit="closed"
+              exit="exit"
               variants={avatarsUlVariants}
             >
               {avatarsImage.map((selection, i) => (
                 <StyledAvatarLi
                   // key={`avatar${selection}`}
-                  // layoutId={selection}
-                  variants={avatarVariants}
+                  key={`avatar${i}`}
+                  // key={i}
+                  // variants={avatarVariants}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
+                  layoutId={selection}
                 >
                   <StyledAvatarImg
+                    key={`avatar${i}`}
                     // key={i}
-                    // key={`avatar${i}`}
                     src={selection}
                     onClick={() => setIndex(i)}
-                    layoutId={selection}
-                  ></StyledAvatarImg>
+                    variants={avatarVariants}
+                    // layoutId={selection}
+                  />
                 </StyledAvatarLi>
               ))}
             </StyledAvatarsMotionUl>
-            {/* <StyledAvatarImg src={avatar[0]}></StyledAvatarImg> */}
           </StyledMetaInfoMotionUl>
-          {/* <div
-          key={`avatarMeta${key}`}
-          style={{
-            position: "absolute",
-            zIndex: 2,
-            width: "100%",
-            height: "100%",
-          }}
-        > */}
-          {/* <AnimateSharedLayoutGallery /> */}
-          {/* </div> */}
           <StyledCovers key={"covers"}>
-            {store.movies.map((section, i) => (
-              <MovieItem
-                key={section.image}
-                color={section.color}
-                currentColor={currentColor}
-                setColor={setColor}
-                image={null}
-                onClick={() => {
-                  //// STORE
-                  setStore({ currentMovies: section });
-                  // paginate(1);
-                }}
-              >
-                {/* <Link to={`/image/${i}`}> */}
-                <img src={section.image} alt="myImage" />
-                {/* </Link> */}
-              </MovieItem>
-            ))}
+            {store.movies.map((valueTable) => {
+              const { image, color, key } = moviesData[valueTable];
+              return (
+                <CoverItem
+                  key={key}
+                  color={color}
+                  currentColor={currentColor}
+                  setColor={setColor}
+                  image={null}
+                  onClick={() => {
+                    //// STORE
+                    // setStore({ currentMovies: section });
+                    setStore({ selectedMovie: key });
+                    // paginate(1);
+                  }}
+                >
+                  {/* <Link to={`/image/${i}`}> */}
+                  <img src={image} alt="myImage" />
+                  {/* </Link> */}
+                </CoverItem>
+              );
+            })}
           </StyledCovers>
           {/* OVERLAY */}
           {index !== false && (

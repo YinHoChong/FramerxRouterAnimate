@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "@popmotion/popcorn";
 // import { images } from "./image-data";
+// import { movies } from "../../../data/MoviesData";
 import { movies } from "../../../data/MoviesData";
 import styled from "styled-components";
 
