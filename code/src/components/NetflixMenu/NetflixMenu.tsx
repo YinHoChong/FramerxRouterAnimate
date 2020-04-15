@@ -171,6 +171,19 @@ const StyledFilterMotion = styled(motion.div)`
   );
 `;
 
+const StyledAvatarsMotionUl = styled(motion.ul)`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+
+const StyledAvatarLi = styled(motion.li)`
+  list-style: none;
+  margin-right: 8px;
+`;
+
 const StyledAvatarImg = styled(motion.img)`
   object-fit: cover;
   border-radius: 50%;
@@ -179,7 +192,7 @@ const StyledAvatarImg = styled(motion.img)`
   border: 2px solid rgba(250, 250, 250, 0.2);
   box-shadow: 0px 2px 3px 0px rgba(250, 250, 250, 0.1);
   cursor: pointer;
-  margin-right: 16px;
+  // margin-right: 16px;
 `;
 
 const StyledOverlay = styled(motion.div)`
@@ -314,6 +327,7 @@ const StyledRealName = styled(motion.div)`
 
 // let thewitcher = "./code/images/02_NF_TheWitcher_SocialSkin_facebook.jpg";
 // let thewitcherPath = url(thewitcher).replace("/preview", "");
+
 let thewitcherWallpaper = "./code/images/wallpaper/netflix-the-witcher-cm.jpg";
 let thewitcherWallpaperPath = url(thewitcherWallpaper).replace("/preview", "");
 
@@ -356,20 +370,24 @@ function MovieItem({ color, currentColor, setColor, image, ...props }) {
 const variants = {
   enter: (direction: number) => {
     return {
-      x: direction > 0 ? 1000 : -100,
-      opacity: 0,
+      // x: direction > 0 ? 1000 : -100,
+      x: -100,
+      opacity: 0.3,
+      duration: 1.5,
     };
   },
   center: {
-    zIndex: 1,
+    // zIndex: 1,
     x: 0,
     opacity: 1,
   },
   exit: (direction: number) => {
     return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -100,
-      opacity: 0,
+      // zIndex: 0,
+      // x: direction < 0 ? 1000 : -100,
+      x: 100,
+      opacity: 0.3,
+      duration: 1.5,
     };
   },
 };
@@ -418,6 +436,45 @@ const metaInfoVariants = {
       x: { stiffness: 1000 },
     },
   },
+};
+
+// VARIANTS Avatars
+const avatarsUlVariants = {
+  // open: {
+  //   transition: { staggerChildren: 1.07, delayChildren: 0.2 },
+  // },
+  // closed: {
+  //   transition: { staggerChildren: 0.05 },
+  // },
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+};
+const avatarVariants = {
+  open: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      x: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  closed: {
+    x: -150,
+    opacity: 0,
+    transition: {
+      x: { stiffness: 1000 },
+    },
+  },
+  // exit: {
+  //   x: -50,
+  //   opacity: 0,
+  //   transition: {
+  //     x: { stiffness: 1000 },
+  //   },
+  // },
 };
 
 const backgroundImageVariants = {
@@ -508,9 +565,6 @@ export function NetflixMenu() {
           realName: "Anya Chalotra",
           image: avatarWitcherYenneferPath,
         },
-        // avatarWitcherGeraltofRiviaPath,
-        // avatarWitcherCiriPath,
-        // avatarWitcherYenneferPath,
       ],
     },
   } = store;
@@ -522,16 +576,6 @@ export function NetflixMenu() {
   //// GALLERY
   const [[page, direction], setPage] = useState([0, 0]);
 
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const imageIndex = wrap(0, movies.length, page);
-
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
-  };
-
   ///// HOOKS Overlay
   const [index, setIndex] = useState(false);
 
@@ -539,14 +583,17 @@ export function NetflixMenu() {
     <>
       {" "}
       <AnimateSharedLayout type="crossfade">
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence
+          initial={false}
+          // custom={direction}
+        >
           <StyledBox>
             <StyledImgMotion
               key={key}
               // src={movies[imageIndex].image}
               // src={image}
               src={wallpaper}
-              custom={direction}
+              // custom={direction}
               variants={variants}
               initial="enter"
               animate="center"
@@ -586,16 +633,31 @@ export function NetflixMenu() {
             >
               {year} |<Label>{maturityNumber}</Label>| {type} | {genre}
             </StyledMetaInfoMotion>
-
-            {avatarsImage.map((selection, i) => (
-              <StyledAvatarImg
-                key={i}
-                src={selection}
-                onClick={() => setIndex(i)}
-                layoutId={selection}
-              ></StyledAvatarImg>
-            ))}
-
+            <StyledAvatarsMotionUl
+              key={`avatarsList${key}`}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={avatarsUlVariants}
+            >
+              {avatarsImage.map((selection, i) => (
+                <StyledAvatarLi
+                  // key={`avatar${selection}`}
+                  // layoutId={selection}
+                  variants={avatarVariants}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <StyledAvatarImg
+                    // key={i}
+                    // key={`avatar${i}`}
+                    src={selection}
+                    onClick={() => setIndex(i)}
+                    layoutId={selection}
+                  ></StyledAvatarImg>
+                </StyledAvatarLi>
+              ))}
+            </StyledAvatarsMotionUl>
             {/* <StyledAvatarImg src={avatar[0]}></StyledAvatarImg> */}
           </StyledMetaInfoMotionUl>
           {/* <div

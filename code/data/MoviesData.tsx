@@ -1,10 +1,13 @@
 import * as React from "react";
 import { url } from "framer/resource";
 
-let thewitcher = "./code/images/02_NF_TheWitcher_SocialSkin_facebook.jpg";
+// WITCHER COVER
+let thewitcher = "./code/images/cover/02_NF_TheWitcher_SocialSkin_facebook.jpg";
 let thewitcherPath = url(thewitcher).replace("/preview", "");
+// WITCHER WALLPAPER
 let thewitcherWallpaper = "./code/images/wallpaper/netflix-the-witcher-cm.jpg";
 let thewitcherWallpaperPath = url(thewitcherWallpaper).replace("/preview", "");
+// WITCHER AVATAR
 let avatarWitcherCiri = "./code/images/avatar/witcherCiri.jpg";
 let avatarWitcherCiriPath = url(avatarWitcherCiri).replace("/preview", "");
 let avatarWitcherYennefer = "./code/images/avatar/witcherYennefer.jpg";
@@ -19,25 +22,64 @@ let avatarWitcherGeraltofRiviaPath = url(avatarWitcherGeraltofRivia).replace(
   ""
 );
 
-let django = "./code/images/34838-269882.jpg";
+// DJANGO COVER
+let django = "./code/images/cover/34838-269882.jpg";
 let djangoPath = url(django).replace("/preview", "");
+// DJANGO WALLPAPER
 let djangoWallpaper =
   "./code/images/wallpaper/movies-selective-coloring-Gentleman-Leonardo-DiCaprio-Person-Django-Unchained-178864.jpg";
 let djangoWallpaperPath = url(djangoWallpaper).replace("/preview", "");
+// DJANGO AVATAR
+let avatarDjangoDjango = "./code/images/avatar/djangoDjango.jpg";
+let avatarDjangoDjangoPath = url(avatarDjangoDjango).replace("/preview", "");
+let avatarDjangoCalvinCandie = "./code/images/avatar/djangoCalvinCandie.jpg";
+let avatarDjangoCalvinCandiePath = url(avatarDjangoCalvinCandie).replace(
+  "/preview",
+  ""
+);
+let avatarDjangoDrKingSchultz = "./code/images/avatar/djangoDrKingSchultz.jpg";
+let avatarDjangoDrKingSchultzPath = url(avatarDjangoDrKingSchultz).replace(
+  "/preview",
+  ""
+);
 
+// DARK KNIGHT COVER
 let darkknightrises =
-  "./code/images/the-dark-knight-rises-2012-hd-wallpaper-preview.jpg";
+  "./code/images/cover/the-dark-knight-rises-2012-hd-wallpaper-preview.jpg";
 let darkknightrisesPath = url(darkknightrises).replace("/preview", "");
+// DARK KNIGHT WALLPAPER
 let darkknightrisesWallpaper = "./code/images/wallpaper/OARBaV.jpg";
 let darkknightrisesWallpaperPath = url(darkknightrisesWallpaper).replace(
   "/preview",
   ""
 );
+// DARK KNIGHT AVATAR
+let avatarBruceWayne = "./code/images/avatar/darkknightrisesBruceWayne.jpg";
+let avatarBruceWaynePath = url(avatarBruceWayne).replace("/preview", "");
+let avatarCommissionerGordon =
+  "./code/images/avatar/darkknightrisesCommissionerGordon.jpg";
+let avatarCommissionerGordonPath = url(avatarCommissionerGordon).replace(
+  "/preview",
+  ""
+);
+let avatarBane = "./code/images/avatar/darkknightrisesBane.jpg";
+let avatarBanePath = url(avatarBane).replace("/preview", "");
+let avatarSelina = "./code/images/avatar/darkknightrisesSelina.jpg";
+let avatarSelinaPath = url(avatarSelina).replace("/preview", "");
 
-let riseempire = "./code/images/maxresdefault.jpg";
+// 300 COVER
+let riseempire = "./code/images/cover/maxresdefault.jpg";
 let riseempirePath = url(riseempire).replace("/preview", "");
+// 300 WALLPAPER
 let riseempireWallpaper = "./code/images/wallpaper/300riseofanempire-3.jpg";
 let riseempireWallpaperPath = url(riseempireWallpaper).replace("/preview", "");
+// 300 AVATAR
+let avatarThemistokles = "./code/images/avatar/300riseempireThemistokles.jpg";
+let avatarThemistoklesPath = url(avatarThemistokles).replace("/preview", "");
+let avatarArtemisia = "./code/images/avatar/300riseempireArtemisia.jpg";
+let avatarArtemisiaPath = url(avatarArtemisia).replace("/preview", "");
+let avatarQueenGorgo = "./code/images/avatar/300riseempireQueenGorgo.jpg";
+let avatarQueenGorgoPath = url(avatarQueenGorgo).replace("/preview", "");
 
 export const movies = [
   {
@@ -81,6 +123,23 @@ export const movies = [
     type: "Movie",
     genre: "Drama, Western",
     color: "#0099ff",
+    avatars: [
+      {
+        summonerName: "Django",
+        realName: "Jamie Foxx",
+        image: avatarDjangoDjangoPath,
+      },
+      {
+        summonerName: "Dr. King Schultz",
+        realName: "Christoph Waltz",
+        image: avatarDjangoDrKingSchultzPath,
+      },
+      {
+        summonerName: "Calvin Candie",
+        realName: "Leonardo DiCaprio",
+        image: avatarDjangoCalvinCandiePath,
+      },
+    ],
   },
   {
     key: 3,
@@ -92,6 +151,28 @@ export const movies = [
     type: "Movie",
     genre: "Action, Adventure",
     color: "#22cc88",
+    avatars: [
+      {
+        summonerName: "Bruce Wayne",
+        realName: "Christian Bale",
+        image: avatarBruceWaynePath,
+      },
+      {
+        summonerName: "Commissioner Gordon",
+        realName: "Gary Oldman",
+        image: avatarCommissionerGordonPath,
+      },
+      {
+        summonerName: "Bane",
+        realName: "Tom Hardy",
+        image: avatarBanePath,
+      },
+      {
+        summonerName: "Selina",
+        realName: "Anne Hathaway",
+        image: avatarSelinaPath,
+      },
+    ],
   },
   {
     key: 4,
@@ -103,5 +184,22 @@ export const movies = [
     type: "Movie",
     genre: "Action, Drama",
     color: "#ffaa00",
+    avatars: [
+      {
+        summonerName: "Themistokles",
+        realName: "Sullivan Stapleton",
+        image: avatarThemistoklesPath,
+      },
+      {
+        summonerName: "Artemisia",
+        realName: "Eva Green",
+        image: avatarArtemisiaPath,
+      },
+      {
+        summonerName: "Queen Gorgo",
+        realName: "Lena Headey",
+        image: avatarQueenGorgoPath,
+      },
+    ],
   },
 ];
